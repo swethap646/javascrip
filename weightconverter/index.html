@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weight converter</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body{
+            margin-top:70px;
+            background:#333;
+            color:#fff;     
+        }
+
+        h4{
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="display-4 text-center mb-2">weight converter</h1>
+
+                <form>
+                    <div class="form-group">
+                        <input id="lbsInput" type="number" class="form-control form-control-lg" placeholder="enter pounds...">
+                    </div>
+                </form>
+
+                <div id="output">
+                    <div class="card card-primary mb-2">
+                        <div class="card-block">
+                            <h4>Grams:</h4>
+                            <div id="gramsOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-success mb-2">
+                        <div class="card-block">
+                            <h4>Kilograms:</h4>
+                            <div id="kgOutput"></div>
+                        </div>
+                    </div>
+
+                    <div class="card card-danger mb-2">
+                        <div class="card-block">
+                            <h4>ounces:</h4>
+                            <div id="ozOutput"></div>
+                        </div>
+                    </div>
+
+                
+                       
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("output").style.visibility = "hidden";
+        document.getElementById("lbsInput").addEventListener("input", function(e) {
+           document.getElementById("output").style.visibility= "visible";
+           let lbsInput = e.target.value;
+          document.getElementById("gramsOutput").innerHTML = lbsInput / 0.0022046;
+          document.getElementById("kgOutput").innerHTML = lbsInput / 2.2046;
+          document.getElementById("ozOutput").innerHTML = lbsInput * 16;
+        });
+
+    </script>
+</body>
+</html>
