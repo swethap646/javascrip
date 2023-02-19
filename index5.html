@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width", initial-scale="1.0">
+        <link rel="stylesheet" href="style5.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <title>To-Do List App</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>ToDo App</header>
+             <div class="inputField">
+                <input type="text" placeholder="Add your new Todo">
+                <button><i class="fas fa-plus"></i></button>
+             </div>
+
+             <ul class="todoList">
+
+             </ul>
+
+             <div class="footer">
+                <span>You have <span class="pendingTasks"></span>pending tasks </span>
+                <button>Clear All</button>
+             </div>
+        </div>
+
+        
+    </body>
+
+    <script>
+        const inputBox = document.querySelector('.inputField input');
+        const addBtn = document.querySelector('.inputField button');
+        const todoList = document.querySelector('.todoList');
+        const deleteAllBtn = document.querySelector('.footer button');
+
+        inputBox.onkeyup = ()=>{
+            let userEnteredValue = inputBox.value;
+            if(userEnteredValue.trim() != 0){
+                addBtn.classList.add("active");
+            } else{
+                addBtn.classList.remove("active");
+            }
+        }
+
+        showTasks();
+
+
+        addBtn.onclick = ()=>{
+            let userEnteredValue = inputBox.value;
+            let getLocalStorageData = localStorage.getItem("New Todo");
+
+            if(getLocalStorageData == null){
+                listArray=[]; 
+            }
+            else{
+                listArray = JSON.parse(getLocalStorageData);
+            }
+
+            listArray.push(userEnteredValue);
+            
+            localStorage.setItem("New Todo", JSON.stringify(listArray));
+
+            showTasks();
+            addBtn.classList.remove("active");
+
+        }
+
+        function showTasks(){
+            let getLocalStorageData = localStorage.getItem("New Todo");
+            if(getLocalStorageData == null){
+                  listArray = [];
+            } else{
+                listArray = JSON.parse(getLocalStorageData);
+            }
+
+            const pendingTasksNumb = document.querySelector(".pendingTasks");
+            pendingTasksNumb.textContent = listArray.length;
+            if(listArray.length > 0){
+                deleteAllBtn.classList.add("active");
+            } else{
+                deleteAllBtn.classList.remove("active");
+            }
+
+            let newLiTag = "";
+            listArray.forEach((element,index) => {
+                newLiTag += `<li>${element}<span class="icon" onclick="deleteTask(${index})"><i class="fas fa-trash"></i></span>
+                    </li>`;
+                });
+                
+            todoList.innerHTML = newLiTag;
+            inputBox.value="";
+        }
+
+        function deleteTask(index){
+            let getLocalStorageData = localStorage.getItem("New Todo");
+                listArray = JSON.parse(getLocalStorageData);
+                listArray.splice(index,1);
+                localStorage.setItem("New Todo",JSON.stringify(listArray));
+                showTasks();
+            
+        }
+
+        deleteAllBtn.onclick = () =>{
+            listArray=[];
+            localStorage.setItem("New Todo", JSON.stringify(listArray));
+            showTasks();
+        } 
+
+
+    </script>
+</html>

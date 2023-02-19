@@ -1,0 +1,149 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+::selection{
+   color:#fff;
+   background:rgba(142,73,232);
+}
+
+body{
+    height:100vh;
+    width:100%;
+    padding:10px;
+    background:linear-gradient(to bottom, #68eacc 0%, #497be8 100%);
+
+}
+
+.wrapper{
+    background:#fff;
+    min-width:400px;
+    width:100%;
+    margin:120px auto;
+    padding:25px;
+    border-radius:5px;
+    box-shadow:0 15px 30px rgba(0,0,0,0.1);
+}
+
+.wrapper header{
+    text-align:center;
+    font-size:30px;
+    font-weight:600;
+}
+
+.wrapper .inputField{
+    margin:20px 0;
+    width:100%;
+    height:45px;
+    display:flex;
+}
+
+ .inputField input{
+    border:1px solid #ccc;
+    border-radius:3px;
+    outline:none;
+    height:100%;
+    width:85%;
+    font-size:17px;
+    padding-left:15px;
+    transition:all 0.3s ease;
+}
+
+.inputField input:focus{
+    background-color:#8e49e8;
+}
+
+.inputField button{
+    width: 50px;
+    height: 100%;
+    border: none;
+    color: #fff;
+    margin-left: 5px;
+    font-size: 21px;
+    outline: none;
+    background: #8E49E8;
+    cursor: pointer;
+    border-radius: 3px;
+    opacity: 0.6;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+  .inputField button:hover,
+  .footer button:hover{
+    background: #721ce3;
+    color:#fff;
+  }
+  .inputField button.active{
+    opacity: 1;
+    pointer-events:auto;
+  }
+
+  .wrapper .todoList{
+    max-height:280px;
+    overflow-y:auto;
+  }
+
+  .todoList li{
+    position:relative;
+    list-style-type:none;
+    margin-bottom:15px;
+    background:#f2f2f2;
+    padding:10px 15px;
+    border-radius:3px;
+    cursor:default;
+    overflow:hidden;
+    word-wrap: break-word;
+  }
+
+  .todoList li .icon{
+    position:absolute;
+    right:-45px;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    background:#ec473c;
+    color:#fff;
+    text-align:center;
+    border-radius:0 3px 3px 0;
+    padding:10px 5px;
+    cursor:pointer;
+    transition:all ease 0.3s;
+  }
+
+  .todoList li:hover icon{
+    right:0px;
+  } 
+
+  .wrapper .footer{
+    display:flex;
+    width:100%;
+    margin-top:20px;
+    align-items:center;
+    justify-content: space-between;
+  }
+
+  .footer button{
+    padding:6px 10px;
+    border-radius:3px;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-weight:400;
+    font-size:16px;
+    margin-left:5px;
+    background:#8e49e8;
+    cursor:pointer;
+    user-select:none;
+    opacity:0.6;
+    pointer-events:none;
+    transition:all 0.3s ease;
+
+  }
+
+  .footer button.active{
+    opacity:1;
+    pointer-events:auto;
+  }
+
